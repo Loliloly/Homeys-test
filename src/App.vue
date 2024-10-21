@@ -1,38 +1,22 @@
 <script setup lang="ts">
 import BaseNotification from './BaseNotification.vue';
+import { useNotificationStore } from '@/stores/notificationStore';
 import { ref } from 'vue'
 
-interface Notification
-{
-	title: string;
-	text: string;
-	type: 'info' | 'success' | 'warning' | 'danger';
-	id: number;
-}
+const notificationStore = useNotificationStore();
 
-// Create an array to hold notifications
-const notifications = ref<Notification[]>([]);
-let notifId: number = 0;
-
-function addNotification(title: string, text: string, type: 'info' | 'success' | 'warning' | 'danger')
-{
-	let id = notifId;
-	notifications.value.push({ title, text, type, id });
-	notifId++;
-}
-
-function removeNotification(index: number)
-{
-	notifications.value.splice(index, 1);
-}
 
 function autoAddNotification(type: 'info' | 'success' | 'warning' | 'danger')
 {
-	if(notifications.value.length > 4)
+	if(notificationStore.notifications.length > 4)
 	{
-		notifications.value.shift();
+		notificationStore.removeNotification(0);
 	}
-	addNotification("Modal Window", "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor", type)
+	notificationStore.addNotification("Modal Window", "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor", type)
+	/* Tests getters
+	console.log(notificationStore.getAllNotifications());
+	console.log(notificationStore.getNotificationById(0));
+	*/
 }
 
 </script>
@@ -54,8 +38,8 @@ function autoAddNotification(type: 'info' | 'success' | 'warning' | 'danger')
 			</button>
 		</div>
 		<div class="notification-container">
-			<div v-for="(notif, index) in notifications.slice().reverse()" :key="notif.id">
-				<BaseNotification :title="notif.title" :text="notif.text" :type= "notif.type" @close="removeNotification(notifications.length - 1 - index)" />
+			<div v-for="(notif, index) in notificationStore.getAllNotifications().slice().reverse()" :key="notif.id">
+				<BaseNotification :title="notif.title" :text="notif.text" :type= "notif.type" @close="notificationStore.removeNotification(notificationStore.getAllNotifications().length - 1 - index)" />
 			</div>
 		</div>
 	</main>
