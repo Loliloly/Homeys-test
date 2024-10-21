@@ -28,6 +28,10 @@ function removeNotification(index: number)
 
 function autoAddNotification(type: 'info' | 'success' | 'warning' | 'danger')
 {
+	if(notifications.value.length > 4)
+	{
+		notifications.value.shift();
+	}
 	addNotification("Modal Window", "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor", type)
 }
 
