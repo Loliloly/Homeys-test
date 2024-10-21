@@ -3,19 +3,15 @@ import BaseNotification from './BaseNotification.vue';
 </script>
 
 <template>
-  <main>
-    <div class="notification-container">
-        <BaseNotification title="Modal Window" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor"/>
-        
-        <!-- Tests with multiple notifications.
-        <BaseNotification title="Modal gndow" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor"/>
-        <BaseNotification title="Modal lndow" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor"/>
-        <BaseNotification title="Modal mndow" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor"/>
-        <BaseNotification title="Modal fndow" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor"/>
-        <BaseNotification title="Modal andow" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor"/>
-        -->
-    </div>
-  </main>
+	<main>
+		<div class="notification-container">
+			<BaseNotification title="Modal Window" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor" type= "danger"/>
+			<BaseNotification title="Modal Window" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor" type= "warning"/>
+			<BaseNotification title="Modal Window" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor" type= "info"/>
+			<BaseNotification title="Modal Window" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor" type= "success"/>
+			<!-- <BaseNotification title="Modal Window" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor" type= ""/> -->
+		</div>
+	</main>
 </template>
 
 <style scoped>
