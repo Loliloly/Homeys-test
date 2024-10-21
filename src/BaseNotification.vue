@@ -34,15 +34,25 @@ const notificationConfig = {
 
 // Default value = info
 const currentConfig = notificationConfig[props.type] || notificationConfig.info;
+
+// Close signal
+const emit = defineEmits(['close']);
+
+// Closing popups
+function handleClose()
+{
+	emit('close');
+}
 </script>
 
 <template>
-
 	<div :class="['notification-base', currentConfig.class]" >
 		<div class="notification-header">
 			<img :src="currentConfig.icon" class="notification-icon" alt="Notification Icon"/>
 			<h1 class="notification-title">{{props.title}}</h1>
-			<img src="./assets/icons/X.svg" class="notification-close-button" alt="Close"/>
+			<button @click="handleClose" class="notification-close-button">
+				<img src="./assets/icons/X.svg" alt="Close"/>
+			</button>
 		</div>
 		<div :class="['notification-body', currentConfig.class]">
 			<p class="notification-text">{{props.text}}</p>
@@ -54,6 +64,7 @@ const currentConfig = notificationConfig[props.type] || notificationConfig.info;
 
 
 /* CSS copied from Figma*/
+
 
 
 .notification-base
@@ -161,6 +172,12 @@ height: 20px;
 flex: none;
 order: 2;
 flex-grow: 0;
+display: flex; 
+align-items: center; 
+justify-content: center; 
+border: none; 
+background: transparent; 
+cursor: pointer; 
 }
 
 .notification-body
